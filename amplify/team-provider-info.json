@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-aipalcare-dev-172131-authRole",
+      "UnauthRoleArn": "arn:aws:iam::021010552143:role/amplify-aipalcare-dev-172131-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::021010552143:role/amplify-aipalcare-dev-172131-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-aipalcare-dev-172131-deployment",
+      "UnauthRoleName": "amplify-aipalcare-dev-172131-unauthRole",
+      "StackName": "amplify-aipalcare-dev-172131",
+      "StackId": "arn:aws:cloudformation:us-east-1:021010552143:stack/amplify-aipalcare-dev-172131/8d4f6720-1963-11eb-a055-0a0207fddeaf",
+      "AmplifyAppId": "d1vm2fn9pbo9wh"
+    },
+    "categories": {
+      "auth": {
+        "aipalcare07d34a36": {}
+      }
+    }
+  }
+}

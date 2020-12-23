@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "aipalcare07d34a36": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}

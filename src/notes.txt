@@ -1,0 +1,5 @@
+css flexbox
+redux
+redux thunk
+nav bar material component ui
+material-ui.com/component
