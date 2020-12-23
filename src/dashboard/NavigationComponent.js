@@ -25,8 +25,8 @@ import TimelapseIcon from '@material-ui/icons/Timelapse';
 import HourglassFullIcon from '@material-ui/icons/HourglassFull';
 import LineStyleIcon from '@material-ui/icons/LineStyle';
 import ScheduleIcon from '@material-ui/icons/Schedule';
-import Avatar from '../DashboardComponents/Avatar';
-import Notifications from '../DashboardComponents/Notifications';
+import Avatar from '../dashboard/Avatar';
+import Notifications from '../dashboard/Notifications';
 import NotesIcon from '@material-ui/icons/Notes';
 
 const drawerWidth = 240;
