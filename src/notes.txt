@@ -3,3 +3,51 @@ redux
 redux thunk
 nav bar material component ui
 material-ui.com/component
+
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Redirect } from 'react-router-dom';
+
+import { Container, makeStyles } from '@material-ui/core';
+
+import LogoButtonCard from '../molecules/Cards/LogoButtonCard';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: theme.spacing(1)
+  },
+  highlight: {
+    backgroundColor: 'red',
+  }
+}));
+
+// Highlight is a bool
+const Welcome = ({highlight}) => { 
+  const [userName, setUserName] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const classes = useStyles();
+
+  useEffect(() => {
+    axios.get('example.com/api/username/12')
+         .then(res => setUserName(res.userName));
+  }, []);
+
+  if (!isAuthenticated()) {
+    return <Redirect to="/" />;
+  }
+  return (
+    <Container maxWidth={false} className={highlight ? classes.highlight : classes.root}>
+      <LogoButtonCard
+        buttonText="Enter"
+        headerText={isAuthenticated && `Welcome, ${userName}`}
+        buttonAction={login}
+      />
+   </Container>
+   );
+  }
+}
+
+export default Welcome;

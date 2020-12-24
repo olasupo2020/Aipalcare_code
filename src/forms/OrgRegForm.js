@@ -7,7 +7,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DateFnsUtils from '@date-io/date-fns';
 import CaaSData from '../contents/org-registration.json';
 import OrganizationModel from '../models/OrganizationModel';
-import { OrganizationService as svc } from '../services/OrganizationService';
+import { OrganizationService } from '../services/OrganizationService';
 
 
 
@@ -40,10 +40,17 @@ const top100Films = [
 
 export default function OrgRegForm() {
 
+  //create service instance
+  const svc = new OrganizationService;
+
   const classes = useStyles();
   const { values, setValues, handleInputChange } = UseForm(OrganizationModel);
 
-  
+  function handleOnClick() {
+    svc.save(values);
+    console.log(values);
+  }
+
   return (
     <Form title="Organization Registration Form">
       <Grid container>
@@ -52,7 +59,7 @@ export default function OrgRegForm() {
           <TextField
             label={CaaSData.companyName}
             variant="outlined"
-
+            name="companyName"
             value={values.companyName}
             style={{ width: 400 }}
             onChange={handleInputChange}
@@ -61,12 +68,14 @@ export default function OrgRegForm() {
             label={CaaSData.licenseNo}
             variant="outlined"
             value={values.licenseNo}
+            name="licenseNo"
             style={{ width: 400 }}
             onChange={handleInputChange}
           />
           <TextField
             label={CaaSData.nhpn}
             variant="outlined"
+            name="nhpn"
             value={values.nhpn}
             style={{ width: 400 }}
             onChange={handleInputChange}
@@ -78,6 +87,7 @@ export default function OrgRegForm() {
           <TextField
             label={CaaSData.pryRepFN}
             variant="outlined"
+            name="pryRepFN"
             value={values.pryRepFN}
             style={{ width: 400 }}
             onChange={handleInputChange}
@@ -86,12 +96,14 @@ export default function OrgRegForm() {
             label={CaaSData.pryRepLN}
             variant="outlined"
             value={values.pryRepLN}
+            name="pryRepLN"
             style={{ width: 400 }}
             onChange={handleInputChange}
           />
           <TextField
             label={CaaSData.govtBody}
             variant="outlined"
+            name="govtBody"
             value={values.govtBody}
             style={{ width: 400 }}
             onChange={handleInputChange}
@@ -101,7 +113,8 @@ export default function OrgRegForm() {
         <Grid item xs={12}>
           <br />
           <div className={classes.root}>
-            <Button variant="contained" color="primary" startIcon={<CloudUploadIcon />}>
+            <Button variant="contained" color="primary" startIcon={<CloudUploadIcon />}
+              onClick={handleOnClick}>
               {CaaSData.saveButton}
             </Button>
             <Button variant="contained" color="primary" startIcon={<EditIcon />} >
