@@ -1,0 +1,4 @@
+{
+    "saveOrg": "https://api.aipalcare.com/register/org",
+    "savePatient": "https://api.aipalcare.com/register/patient"
+}

@@ -1,0 +1,17 @@
+{
+    "title": "Session Notes",
+    "clientName": "Client Name",
+    "dateOfSession": "Date of Session",
+    "dateOfBirth": "Date of Birth",
+    "age": "Age",
+    "dateInit": "Date of Initial Evaluation",
+    "treatmentPeriod": "Treatment period",
+    "pryDiagnosis": "Primary Area of Diagnosis & ICD-10",
+    "cptCode": "CPT Treatment code",
+    "parentName": "Parent/Caregiver Name",
+    "clinician": "Clinician",
+    "cosignor": "Cosignor",
+    "saveButton": "Save",
+    "deleteButton": "Delete",
+    "editButton": "Edit"
+}

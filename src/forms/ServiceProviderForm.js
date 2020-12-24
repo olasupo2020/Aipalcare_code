@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { TextField, Grid, Button, Select,InputLabel,Input,MenuItem,Checkbox,FormControl
-,ListItemText } from '@material-ui/core';
+import {
+  TextField, Grid, Button, Select, InputLabel, Input, MenuItem, Checkbox, FormControl
+  , ListItemText
+} from '@material-ui/core';
 import { UseForm, Form } from '../models/UseForm';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import EditIcon from '@material-ui/icons/Edit';
 import DateFnsUtils from '@date-io/date-fns';
+import CaasData from '../contents/sp-registration.json';
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
@@ -32,11 +35,11 @@ const initData = {
 }
 
 const names = [
-    'Speech Language Pathologist',
-    'Occupational Therapist',
-    'Physical Therapist',
-   
-  ];
+  'Speech Language Pathologist',
+  'Occupational Therapist',
+  'Physical Therapist',
+
+];
 
 
 export default function ServiceProviderForm() {
@@ -64,27 +67,27 @@ export default function ServiceProviderForm() {
     setCredential(value);
   };
 
-  
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
+
+  const ITEM_HEIGHT = 48;
+  const ITEM_PADDING_TOP = 8;
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 250,
+      },
     },
-  },
-};
+  };
 
 
 
   return (
-    <Form title="Clinician Registration Form">
+    <Form title={CaasData.formTitle}>
       <Grid container spacing={3}>
         <Grid item xs={12}  >
-       
+
           <TextField
-            label="First Name"
+            label={CaasData.firstName}
             variant="outlined"
             id="mui-theme-provider-outlined-input"
             name="clientName"
@@ -92,10 +95,10 @@ const MenuProps = {
             style={{ width: 300 }}
             onChange={handleInputChange}
           />
-       
-         
+
+
           <TextField
-            label="Last Name"
+            label={CaasData.lastName}
             variant="outlined"
             id="mui-theme-provider-outlined-input"
             name="clientName"
@@ -103,31 +106,31 @@ const MenuProps = {
             style={{ width: 300 }}
             onChange={handleInputChange}
           />
-         
-       
-        <Select
-          labelId="demo-mutiple-checkbox-label"
-          id="demo-mutiple-checkbox"          
-          value={credential}
-          onChange={handleChange}
-          input={<Input />}       
-          style={{ width: 310 }}
-         
-        >
-          {names.map((name) => (
-            <MenuItem key={name} value={name} >
-              <Checkbox checked={credential.indexOf(name) > -1} />
-              <ListItemText primary={name} />
-            </MenuItem>
-          ))}
-        </Select>
+
+
+          <Select
+            labelId="demo-mutiple-checkbox-label"
+            id="demo-mutiple-checkbox"
+            value={credential}
+            onChange={handleChange}
+            input={<Input />}
+            style={{ width: 310 }}
+
+          >
+            {names.map((name) => (
+              <MenuItem key={name} value={name} >
+                <Checkbox checked={credential.indexOf(name) > -1} />
+                <ListItemText primary={name} />
+              </MenuItem>
+            ))}
+          </Select>
 
 
         </Grid>
 
         <Grid item xs={12}>
           <TextField
-            label="National Health Provider Number"
+            label={CaasData.nhpn}
             variant="outlined"
             id="mui-theme-provider-outlined-input"
             name="clientName"
@@ -135,9 +138,9 @@ const MenuProps = {
             style={{ width: 300 }}
             onChange={handleInputChange}
           />
-        
+
           <TextField
-            label="License Number"
+            label={CaasData.licenseNo}
             variant="outlined"
             id="mui-theme-provider-outlined-input"
             name="clientName"
@@ -145,9 +148,9 @@ const MenuProps = {
             style={{ width: 300 }}
             onChange={handleInputChange}
           />
-    
-<TextField
-            label="Governing Body"
+
+          <TextField
+            label={CaasData.govtBody}
             variant="outlined"
             id="mui-theme-provider-outlined-input"
             name="clientName"
@@ -155,11 +158,11 @@ const MenuProps = {
             style={{ width: 300 }}
             onChange={handleInputChange}
           />
-</Grid>
-          
-          <Grid item xs={12}>
-            <TextField
-            label="Governing Body"
+        </Grid>
+
+        <Grid item xs={12}>
+          <TextField
+            label={CaasData.credential}
             variant="outlined"
             id="mui-theme-provider-outlined-input"
             name="clientName"
@@ -167,47 +170,47 @@ const MenuProps = {
             style={{ width: 300 }}
             onChange={handleInputChange}
           />
-                 <TextField
-            label="Governing Body"
+          <TextField
+            label={CaasData.year}
             variant="outlined"
             id="mui-theme-provider-outlined-input"
             name="clientName"
             value={values.clientName}
-            style={{ width: 300  }}
+            style={{ width: 300 }}
             onChange={handleInputChange}
           />
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        
-                <KeyboardDatePicker
-                  disableToolbar
-                  variant="inline"
-                  format="MM/dd/yyyy"
-                  margin="normal"
-                  id="date-picker-inline"
-                  label="Date of birth"
-                  style={{ width: 300  }}
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                  KeyboardButtonProps={{
-                    'aria-label': 'change date',
-                  }}
-                />
-           
-                </MuiPickersUtilsProvider>
+
+            <KeyboardDatePicker
+              disableToolbar
+              variant="inline"
+              format="MM/dd/yyyy"
+              margin="normal"
+              id="date-picker-inline"
+              label={CaasData.dateOfBirth}
+              style={{ width: 300 }}
+              value={selectedDate}
+              onChange={handleDateChange}
+              KeyboardButtonProps={{
+                'aria-label': 'change date',
+              }}
+            />
+
+          </MuiPickersUtilsProvider>
         </Grid>
         <Grid item xs={12}>
-            <br />
-            <div className={classes.root}>
+          <br />
+          <div className={classes.root}>
             <Button variant="contained" color="primary" startIcon={<CloudUploadIcon />}>
-              Save
+              {CaasData.saveButton}
             </Button>
             <Button variant="contained" color="primary" startIcon={<EditIcon />} >
-              Edit
+              {CaasData.editButton}
             </Button>
-            </div>
-          </Grid>
-       
-      
+          </div>
+        </Grid>
+
+
       </Grid>
     </Form>
   );

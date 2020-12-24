@@ -5,6 +5,12 @@ import { UseForm, Form } from '../models/UseForm';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import EditIcon from '@material-ui/icons/Edit';
 import DateFnsUtils from '@date-io/date-fns';
+import CaaSData from '../contents/org-registration.json';
+import OrganizationModel from '../models/OrganizationModel';
+import { OrganizationService as svc } from '../services/OrganizationService';
+
+
+
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
@@ -18,17 +24,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const initData = {
-  clientId: 1,
-  clientName: "",
-  serviceProvider: "Jones",
-  date: "Sept. 12, 2020",
-  time: "11:00am",
-  scheduler: "FrontDesk",
-  location: "Wayne",
-  todayDate: new Date(),
-  isPermanent: false
-}
 
 const top100Films = [
   { title: 'The Shawshank Redemption', year: 1994 },
@@ -42,46 +37,37 @@ const top100Films = [
 ];
 
 
+
 export default function OrgRegForm() {
+
   const classes = useStyles();
-  const { values, setValues, handleInputChange } = UseForm(initData);
+  const { values, setValues, handleInputChange } = UseForm(OrganizationModel);
 
-  const [selectedDate, setSelectedDate] = useState(new Date('2014-08-18T21:11:54'));
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
-
-
+  
   return (
     <Form title="Organization Registration Form">
       <Grid container>
         <Grid item xs={12}>
-          
+
           <TextField
-            label="Company Legal Name"
+            label={CaaSData.companyName}
             variant="outlined"
-            id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
+
+            value={values.companyName}
             style={{ width: 400 }}
             onChange={handleInputChange}
           />
           <TextField
-            label="License Number"
+            label={CaaSData.licenseNo}
             variant="outlined"
-            id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
+            value={values.licenseNo}
             style={{ width: 400 }}
             onChange={handleInputChange}
           />
           <TextField
-            label="National Health Provider Number"
+            label={CaaSData.nhpn}
             variant="outlined"
-            id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
+            value={values.nhpn}
             style={{ width: 400 }}
             onChange={handleInputChange}
           />
@@ -90,47 +76,41 @@ export default function OrgRegForm() {
 
         <Grid item xs={12}>
           <TextField
-            label="Primary Rep. First Name"
+            label={CaaSData.pryRepFN}
             variant="outlined"
-            id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
+            value={values.pryRepFN}
             style={{ width: 400 }}
             onChange={handleInputChange}
           />
           <TextField
-            label="Primary Rep. Last Name"
+            label={CaaSData.pryRepLN}
             variant="outlined"
-            id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
+            value={values.pryRepLN}
             style={{ width: 400 }}
             onChange={handleInputChange}
           />
-            <TextField
-            label="Governing Body"
+          <TextField
+            label={CaaSData.govtBody}
             variant="outlined"
-            id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
+            value={values.govtBody}
             style={{ width: 400 }}
             onChange={handleInputChange}
           />
-          
+
         </Grid>
         <Grid item xs={12}>
-            <br />
-            <div className={classes.root}>
+          <br />
+          <div className={classes.root}>
             <Button variant="contained" color="primary" startIcon={<CloudUploadIcon />}>
-              Save
+              {CaaSData.saveButton}
             </Button>
             <Button variant="contained" color="primary" startIcon={<EditIcon />} >
-              Edit
+              {CaaSData.editButton}
             </Button>
-            </div>
-          </Grid>
-       
-      
+          </div>
+        </Grid>
+
+
       </Grid>
     </Form>
   );

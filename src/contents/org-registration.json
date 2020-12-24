@@ -1,0 +1,12 @@
+{
+    "formTitle": "Organization Registration",
+    "companyName": "Company Legal Name",
+    "nhpn": "National Health Provider Number",
+    "licenseNo": "License Number",
+    "pryRepFN": "Primary Rep. First Name",
+    "pryRepLN": "Primary Rep. Last Name",
+    "govtBody": "Governing Body",
+    "saveButton": "Save",
+    "deleteButton": "Delete",
+    "editButton": "Edit"
+}

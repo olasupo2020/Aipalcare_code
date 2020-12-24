@@ -1,0 +1,14 @@
+{
+    "formTitle":"Clinician Registration",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "nhpn": "National Health Provider Number",
+    "licenseNo": "License Number",
+    "govtBody": "Governing Boby",
+    "year": "Credential Year",
+    "credential": "Credential Specialization",
+    "dateOfBirth": "Date of birth",
+    "saveButton": "Save",
+    "deleteButton": "Delete",
+    "editButton": "Edit"
+}
