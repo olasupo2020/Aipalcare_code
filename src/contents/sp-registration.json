@@ -1,7 +1,7 @@
 {
-    "formTitle":"Clinician Registration",
+    "formTitle": "Clinician Registration",
     "firstName": "First Name",
-    "lastName": "Last Name",
+    "lastName": "Surname Name",
     "nhpn": "National Health Provider Number",
     "licenseNo": "License Number",
     "govtBody": "Governing Boby",
