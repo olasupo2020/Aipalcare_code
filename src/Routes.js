@@ -10,15 +10,16 @@ import ServiceProviderForm from './forms/ServiceProviderForm';
 import SessionNotesPanel from './forms/SessionNotesPanel';
 import CalendarForm from './forms/CalendarForm';
 import SessionNotesForm from './forms/SessionNotesForm';
+import { RouteConstants } from './constants/CommonConstants';
 
 export default class Routes extends Component {
     render() {
         return (
             <div>
                 <Switch>
-                    <Route exact from='/home' render={props => <NavigationComponent {...props} />} />
+                    <Route exact from={RouteConstants.HOME} render={props => <NavigationComponent {...props} />} />
                     <Route exact path='/dailyschs' render={props => <DailySchedules {...props} />} />
-                    <Route exact path='/schedule' render={props => <ScheduleAptForm {...props} />} />
+                    <Route exact path={RouteConstants.SCHEDULE} render={props => <ScheduleAptForm {...props} />} />
                     <Route exact path='/reg-org' render={props => <OrgRegForm {...props} />} />
                     <Route exact path='/reg-sp' render={props => <ServiceProviderForm {...props} />} />
                     <Route exact path='/notespanel' render={props => <SessionNotesPanel {...props} />} />

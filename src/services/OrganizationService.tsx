@@ -20,8 +20,8 @@ export class OrganizationService {
                 );
 
         const { body } = await response.data;
-        console.log(body)
-
+        console.log(body);
+                    
 
 
         return true;

@@ -3,8 +3,10 @@ import clsx from 'clsx';
 import logo from '../images/122px.png';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 //import Drawer from '@material-ui/core/Drawer';
-import {Drawer, AppBar, Toolbar, List, CssBaseline, Typography, Divider, IconButton, 
-  ListItem, ListItemIcon, ListItemText} from '@material-ui/core';
+import {
+  Drawer, AppBar, Toolbar, List, CssBaseline, Typography, Divider, IconButton,
+  ListItem, ListItemIcon, ListItemText
+} from '@material-ui/core';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -18,7 +20,7 @@ import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import ReceiptIcon from '@material-ui/icons/Receipt';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Button, ButtonGroup } from '@material-ui/core';
 import TodayIcon from '@material-ui/icons/Today';
 import TimelapseIcon from '@material-ui/icons/Timelapse';
@@ -28,6 +30,7 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import Avatar from '../dashboard/Avatar';
 import Notifications from '../dashboard/Notifications';
 import NotesIcon from '@material-ui/icons/Notes';
+import { RouteConstants } from '../constants/CommonConstants';
 
 const drawerWidth = 240;
 
@@ -50,11 +53,11 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    
+
   },
   menuButton: {
     marginRight: 36,
-    
+
   },
   hide: {
     display: 'none',
@@ -63,8 +66,8 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
-    
-    
+
+
   },
   drawerOpen: {
     width: drawerWidth,
@@ -91,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: theme.spacing(0, 1),
-   
+
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
   },
@@ -102,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavigationComponent(props) {
-    console.log(props);
+  console.log(props);
   const { history } = props;
 
   const classes = useStyles();
@@ -119,68 +122,69 @@ function NavigationComponent(props) {
 
   const navList = [
     {
-        text:'Dashboard',
-        icon: <LineStyleIcon />,
-        onClick: () => history.push('/dashboard')
-        }, 
-    {
-    text:'Anna Otome',
-    icon: <AccountCircleIcon />,
-    onClick: () => history.push('/dash')
-    }, 
-    {
-        text:'Schedule',
-        icon: <DateRangeIcon />,
-        onClick: () => history.push('/dailyschs')
-    }, 
-    {
-        text:'New Patient',
-        icon: <AccessibilityNewIcon />,
-        onClick: () => history.push('/dash')
-    }, 
-    {
-        text:'Clients',
-        icon: <PeopleAltIcon />,
-        onClick: () => history.push('/dash')
+      text: 'Dashboard',
+      icon: <LineStyleIcon />,
+      onClick: () => history.push('/dashboard')
     },
     {
-        text:'Service Providers',
-        icon: <LocalHospitalIcon />,
-        onClick: () => history.push('/dash')
-    }, 
-    {
-        text:'Locations',
-        icon: <LocationOnIcon />,
-        onClick: () => history.push('/dash')
+      text: 'Anna Otome',
+      icon: <AccountCircleIcon />,
+      onClick: () => history.push('/dash')
     },
     {
-        text:'Allied Healthcare',
-        icon: <AcUnitIcon />,
-        onClick: () => history.push('/dash')
-    }, 
+      text: 'Schedule',
+      icon: <DateRangeIcon />,
+      onClick: () => history.push('/dailyschs')
+    },
     {
-        text:'Billing',
-        icon: <ReceiptIcon />,
-        onClick: () => history.push('/dash')
+      text: 'New Patient',
+      icon: <AccessibilityNewIcon />,
+      onClick: () => history.push('/dash')
+    },
+    {
+      text: 'Clients',
+      icon: <PeopleAltIcon />,
+      onClick: () => history.push('/dash')
+    },
+    {
+      text: 'Service Providers',
+      icon: <LocalHospitalIcon />,
+      onClick: () => history.push('/dash')
+    },
+    {
+      text: 'Locations',
+      icon: <LocationOnIcon />,
+      onClick: () => history.push('/dash')
+    },
+    {
+      text: 'Allied Healthcare',
+      icon: <AcUnitIcon />,
+      onClick: () => history.push('/dash')
+    },
+    {
+      text: 'Billing',
+      icon: <ReceiptIcon />,
+      onClick: () => history.push('/dash')
     }
-]
-     ;
+  ]
+    ;
 
-     const navListBottom = [
-      {
-          text:'Session Notes',
-          icon: <NotesIcon />,
-          onClick: () => history.push('/notespanel')
-          }, 
-      {
-      text:'Notifications',
+  const navListBottom = [
+    {
+      text: 'Session Notes',
+      icon: <NotesIcon />,
+      onClick: () => history.push('/notespanel')
+    },
+    {
+      text: 'Notifications',
       icon: <Notifications />,
       onClick: () => history.push('/dash')
-      }
-    ];
+    }
+  ];
 
-    const schedule =  () => history.push('/schedule');
-    const calendar = () => history.push('/calendar')
+  const schedule = () => history.push(RouteConstants.SCHEDULE);
+
+  const calendar = () => history.push('/calendar')
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -203,20 +207,20 @@ function NavigationComponent(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" Wrap>
-          <img src={logo}  alt="logo" />
+            <img src={logo} alt="logo" />
           </Typography>
-          <div style={{marginLeft:'52%'}}>
-          <ButtonGroup variant="contained" color='secondary' >
-          <Button startIcon={<TodayIcon />}  onClick={calendar} >Calendar</Button>
-          <Button startIcon={<TimelapseIcon />} >Yesterday</Button>
+          <div style={{ marginLeft: '52%' }}>
+            <ButtonGroup variant="contained" color='secondary' >
+              <Button startIcon={<TodayIcon />} onClick={calendar} >Calendar</Button>
+              <Button startIcon={<TimelapseIcon />} >Yesterday</Button>
               <Button startIcon={<TodayIcon />} >Today</Button>
               <Button startIcon={<HourglassFullIcon />} >Tomorrow</Button>
               <Button startIcon={<ScheduleIcon />} onClick={schedule}>Schedule</Button>
               <Avatar />
-          </ButtonGroup>
-          
+            </ButtonGroup>
+
           </div>
-         
+
         </Toolbar>
       </AppBar>
       <Drawer
@@ -238,29 +242,28 @@ function NavigationComponent(props) {
           </IconButton>
         </div>
         <Divider />
-        
+
         <List>
-          {navList.map((item, index) => 
-          {
-              const {text,icon,onClick} = item;
-          return (
-            <ListItem button key={text} onClick={onClick}>
-              {icon && <ListItemIcon>{icon}</ListItemIcon> }
-              <ListItemText primary={text} />
-            </ListItem>
-          );
+          {navList.map((item, index) => {
+            const { text, icon, onClick } = item;
+            return (
+              <ListItem button key={text} onClick={onClick}>
+                {icon && <ListItemIcon>{icon}</ListItemIcon>}
+                <ListItemText primary={text} />
+              </ListItem>
+            );
           })}
         </List>
         <Divider />
         <List>
-          {navListBottom.map((item, index) =>{
-              const {text,icon,onClick} = item;
-          return (
-            <ListItem button key={text} onClick={onClick}>
-              {icon && <ListItemIcon>{icon}</ListItemIcon> }
-              <ListItemText primary={text} />
-            </ListItem>
-          );
+          {navListBottom.map((item, index) => {
+            const { text, icon, onClick } = item;
+            return (
+              <ListItem button key={text} onClick={onClick}>
+                {icon && <ListItemIcon>{icon}</ListItemIcon>}
+                <ListItemText primary={text} />
+              </ListItem>
+            );
           })}
         </List>
       </Drawer>
