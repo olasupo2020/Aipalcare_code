@@ -4,7 +4,7 @@ import {
   TextField, Grid, Button, Select, InputLabel, Input, MenuItem, Checkbox, FormControl
   , ListItemText
 } from '@material-ui/core';
-import { UseForm, Form } from '../models/UseForm';
+import { UseForm, Form } from '../Models/UseForm';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import EditIcon from '@material-ui/icons/Edit';
 import DateFnsUtils from '@date-io/date-fns';
@@ -13,6 +13,7 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+import axios from "axios"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,6 +43,8 @@ const names = [
 ];
 
 
+
+
 export default function ServiceProviderForm() {
   const classes = useStyles();
   const { values, setValues, handleInputChange } = UseForm(initData);
@@ -67,6 +70,16 @@ export default function ServiceProviderForm() {
     setCredential(value);
   };
 
+  const handleSubmitForm = (event) => {
+      axios.post('https://jsonplaceholder.typicode.com/posts', values)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    console.log(values);
+  }
 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -82,7 +95,7 @@ export default function ServiceProviderForm() {
 
 
   return (
-    <Form title={CaasData.formTitle}>
+    <Form title={CaasData.formTitle} onSubmit={handleSubmitForm}>
       <Grid container spacing={3}>
         <Grid item xs={12}  >
 
@@ -90,8 +103,8 @@ export default function ServiceProviderForm() {
             label={CaasData.firstName}
             variant="outlined"
             id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
+            name="firstName"
+            value={values.firstName}
             style={{ width: 300 }}
             onChange={handleInputChange}
           />
@@ -101,8 +114,8 @@ export default function ServiceProviderForm() {
             label={CaasData.lastName}
             variant="outlined"
             id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
+            name="lastName"
+            value={values.lastName}
             style={{ width: 300 }}
             onChange={handleInputChange}
           />
@@ -133,8 +146,8 @@ export default function ServiceProviderForm() {
             label={CaasData.nhpn}
             variant="outlined"
             id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
+            name="nhpn"
+            value={values.nhpn}
             style={{ width: 300 }}
             onChange={handleInputChange}
           />
@@ -143,8 +156,8 @@ export default function ServiceProviderForm() {
             label={CaasData.licenseNo}
             variant="outlined"
             id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
+            name="licenseNo"
+            value={values.licenseNo}
             style={{ width: 300 }}
             onChange={handleInputChange}
           />
@@ -153,8 +166,8 @@ export default function ServiceProviderForm() {
             label={CaasData.govtBody}
             variant="outlined"
             id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
+            name="govtBody"
+            value={values.govtBody}
             style={{ width: 300 }}
             onChange={handleInputChange}
           />
@@ -165,8 +178,8 @@ export default function ServiceProviderForm() {
             label={CaasData.credential}
             variant="outlined"
             id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
+            name="credential"
+            value={values.setCredential}
             style={{ width: 300 }}
             onChange={handleInputChange}
           />
@@ -174,16 +187,17 @@ export default function ServiceProviderForm() {
             label={CaasData.year}
             variant="outlined"
             id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
+            name="year"
+            value={values.year}
             style={{ width: 300 }}
             onChange={handleInputChange}
           />
+     
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
-
+      
+         
             <KeyboardDatePicker
-              disableToolbar
-              variant="inline"
+           
               format="MM/dd/yyyy"
               margin="normal"
               id="date-picker-inline"
@@ -194,14 +208,19 @@ export default function ServiceProviderForm() {
               KeyboardButtonProps={{
                 'aria-label': 'change date',
               }}
+              
             />
+            
+
 
           </MuiPickersUtilsProvider>
+     
+          
         </Grid>
         <Grid item xs={12}>
           <br />
           <div className={classes.root}>
-            <Button variant="contained" color="primary" startIcon={<CloudUploadIcon />}>
+            <Button variant="contained" color="primary" startIcon={<CloudUploadIcon />} onClick={handleSubmitForm}>
               {CaasData.saveButton}
             </Button>
             <Button variant="contained" color="primary" startIcon={<EditIcon />} >

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import {AppBar,Tabs,Tab, Typography, Box, Avatar} from '@material-ui/core';
-import { UseForm, Form } from '../models/UseForm';
+import { UseForm, Form } from '../Models/UseForm';
 import SessionNotesForm from './SessionNotesForm';
-import { SessionNotes } from '../models/SessionNotes';
+import { SessionNotes } from '../Models/SessionNotes';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -158,7 +158,6 @@ export default function SessionNotesPanel() {
       <TabPanel value={value} index={0}>
         
       <SessionNotesForm data ={panel1Data}/>
-     
       </TabPanel>
       <TabPanel value={value} index={1}>
       {headerData[1].patientName} {headerData[1].sessionNotes}
