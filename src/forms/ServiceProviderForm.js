@@ -50,9 +50,18 @@ export default function ServiceProviderForm() {
   const { values, setValues, handleInputChange } = UseForm(initData);
 
   const [selectedDate, setSelectedDate] = useState(new Date('2014-08-18T21:11:54'));
+  const [errorMessage, setErrorMessage] = useState('') 
 
+  const currentDate = initData.todayDate;
   const handleDateChange = (date) => {
-    setSelectedDate(date);
+    if(date > currentDate){
+      setErrorMessage("Invalid Date")
+    }else{
+      setSelectedDate(date);
+      setErrorMessage("");
+      console.log(date);
+      console.log(currentDate)
+    }
   };
   const [credential, setCredential] = useState([]);
   const handleChange = (event) => {
@@ -97,37 +106,40 @@ export default function ServiceProviderForm() {
   return (
     <Form title={CaasData.formTitle} onSubmit={handleSubmitForm}>
       <Grid container spacing={3}>
-        <Grid item xs={12}  >
+        <Grid item xs={12} >
 
           <TextField
             label={CaasData.firstName}
-            variant="outlined"
-            id="mui-theme-provider-outlined-input"
+           
+            id="mui-theme-provider-standard-input"
             name="firstName"
             value={values.firstName}
-            style={{ width: 300 }}
+            style={{ width: '60%' }}
             onChange={handleInputChange}
           />
-
-
+</Grid>
+        <Grid item xs={12} >
           <TextField
             label={CaasData.lastName}
-            variant="outlined"
+           
             id="mui-theme-provider-outlined-input"
             name="lastName"
             value={values.lastName}
-            style={{ width: 300 }}
+            style={{ width: '60%' }}
             onChange={handleInputChange}
           />
+           </Grid>
 
-
-          <Select
-            labelId="demo-mutiple-checkbox-label"
-            id="demo-mutiple-checkbox"
-            value={credential}
+           <Grid item xs={12} >
+             <FormControl style={{width: '100%', margin:'0 20%' }} >
+           <InputLabel id="demo-mutiple-name-label">Select</InputLabel>
+            <Select
+      
+            labelId="demo-simple-select-outlined-label"
+            id="demo-simple-select-outlined"
             onChange={handleChange}
             input={<Input />}
-            style={{ width: 310 }}
+            style={{width: '60%' }}
 
           >
             {names.map((name) => (
@@ -137,72 +149,67 @@ export default function ServiceProviderForm() {
               </MenuItem>
             ))}
           </Select>
-
-
-        </Grid>
-
-        <Grid item xs={12}>
+          </FormControl>
+        
+          </Grid>
+          <Grid item xs={12} >
           <TextField
             label={CaasData.nhpn}
-            variant="outlined"
             id="mui-theme-provider-outlined-input"
             name="nhpn"
             value={values.nhpn}
-            style={{ width: 300 }}
+            style={{ width: '60%'  }}
             onChange={handleInputChange}
           />
+</Grid>
 
+<Grid item xs={12} >
           <TextField
             label={CaasData.licenseNo}
-            variant="outlined"
             id="mui-theme-provider-outlined-input"
             name="licenseNo"
             value={values.licenseNo}
-            style={{ width: 300 }}
+            style={{ width: '60%'  }}
             onChange={handleInputChange}
-          />
+          /></Grid>
 
+<Grid item xs={12} >
           <TextField
             label={CaasData.govtBody}
-            variant="outlined"
             id="mui-theme-provider-outlined-input"
             name="govtBody"
             value={values.govtBody}
-            style={{ width: 300 }}
+            style={{ width: '60%'  }}
             onChange={handleInputChange}
           />
-        </Grid>
-
-        <Grid item xs={12}>
+    </Grid>
+    <Grid item xs={12} >
           <TextField
             label={CaasData.credential}
-            variant="outlined"
             id="mui-theme-provider-outlined-input"
             name="credential"
             value={values.setCredential}
-            style={{ width: 300 }}
+            style={{ width: '60%'  }}
             onChange={handleInputChange}
-          />
+          /></Grid>
+          <Grid item xs={12} >
           <TextField
             label={CaasData.year}
-            variant="outlined"
             id="mui-theme-provider-outlined-input"
             name="year"
             value={values.year}
-            style={{ width: 300 }}
+            style={{ width: '60%'  }}
             onChange={handleInputChange}
-          />
-     
+          /></Grid>
+     <Grid item xs={12} >
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      
-         
-            <KeyboardDatePicker
+              <KeyboardDatePicker
            
               format="MM/dd/yyyy"
               margin="normal"
               id="date-picker-inline"
               label={CaasData.dateOfBirth}
-              style={{ width: 300 }}
+              style={{ width: '60%'  }}
               value={selectedDate}
               onChange={handleDateChange}
               KeyboardButtonProps={{
@@ -211,13 +218,11 @@ export default function ServiceProviderForm() {
               
             />
             
-
-
           </MuiPickersUtilsProvider>
-     
+          <div style={{fontWeight: 'bold', color: 'red'}}><span>{errorMessage}</span></div>
+          </Grid>
           
-        </Grid>
-        <Grid item xs={12}>
+          <Grid item xs={12} >
           <br />
           <div className={classes.root}>
             <Button variant="contained" color="primary" startIcon={<CloudUploadIcon />} onClick={handleSubmitForm}>
