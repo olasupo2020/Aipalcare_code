@@ -12,7 +12,7 @@ console.log(CardData[0])
 function Dashboard() {
   return (
     <div style={{ margin: '5%' }}>
-
+      <h1>DASHBOARD</h1>
       <div className="container">
         <div className="row">
           <div className="col-sm-6 col-md-4 mb-3">
