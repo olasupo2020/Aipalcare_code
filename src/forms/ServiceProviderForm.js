@@ -59,8 +59,6 @@ export default function ServiceProviderForm() {
     }else{
       setSelectedDate(date);
       setErrorMessage("");
-      console.log(date);
-      console.log(currentDate)
     }
   };
   const [credential, setCredential] = useState([]);
