@@ -124,47 +124,48 @@ function NavigationComponent(props) {
     {
       text: 'Dashboard',
       icon: <LineStyleIcon />,
-      onClick: () => history.push('/dashboard')
+      onClick: () => history.push(RouteConstants.DASHBOARD)
     },
     {
       text: 'Anna Otome',
       icon: <AccountCircleIcon />,
-      onClick: () => history.push('/dash')
+      onClick: () => history.push(RouteConstants.PROFILE
+      )
     },
     {
       text: 'Schedule',
       icon: <DateRangeIcon />,
-      onClick: () => history.push('/dailyschs')
+      onClick: () => history.push(RouteConstants.DAILYSIC)
     },
     {
       text: 'New Patient',
       icon: <AccessibilityNewIcon />,
-      onClick: () => history.push('/dash')
+      onClick: () => history.push(RouteConstants.NEW)
     },
     {
       text: 'Clients',
       icon: <PeopleAltIcon />,
-      onClick: () => history.push('/dash')
+      onClick: () => history.push(RouteConstants.DASHB)
     },
     {
       text: 'Service Providers',
       icon: <LocalHospitalIcon />,
-      onClick: () => history.push('/dash')
+      onClick: () => history.push(RouteConstants.SERVICE)
     },
     {
       text: 'Locations',
       icon: <LocationOnIcon />,
-      onClick: () => history.push('/dash')
+      onClick: () => history.push(RouteConstants.LOCATION)
     },
     {
       text: 'Allied Healthcare',
       icon: <AcUnitIcon />,
-      onClick: () => history.push('/dash')
+      onClick: () => history.push(RouteConstants.DASH)
     },
     {
       text: 'Billing',
       icon: <ReceiptIcon />,
-      onClick: () => history.push('/dash')
+      onClick: () => history.push(RouteConstants.BILLING)
     }
   ]
     ;
@@ -173,18 +174,20 @@ function NavigationComponent(props) {
     {
       text: 'Session Notes',
       icon: <NotesIcon />,
-      onClick: () => history.push('/notespanel')
+      onClick: () => history.push(RouteConstants.NOTESPANEL)
     },
     {
       text: 'Notifications',
       icon: <Notifications />,
-      onClick: () => history.push('/dash')
+      onClick: () => history.push(RouteConstants.NOTIFY)
     }
   ];
 
   const schedule = () => history.push(RouteConstants.SCHEDULE);
 
-  const calendar = () => history.push('/calendar')
+  const calendar = () => history.push(RouteConstants.CALENDAR)
+
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -216,6 +219,7 @@ function NavigationComponent(props) {
               <Button startIcon={<TodayIcon />} >Today</Button>
               <Button startIcon={<HourglassFullIcon />} >Tomorrow</Button>
               <Button startIcon={<ScheduleIcon />} onClick={schedule}>Schedule</Button>
+
               <Avatar />
             </ButtonGroup>
 
