@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
+  invalid_input:{
+    color: "red"
+  }
 }));
 
 const initData = {
@@ -50,17 +53,23 @@ export default function ServiceProviderForm() {
   const { values, setValues, handleInputChange } = UseForm(initData);
 
   const [selectedDate, setSelectedDate] = useState(new Date('2014-08-18T21:11:54'));
-  const [errorMessage, setErrorMessage] = useState('') 
+  const [errorMessage, setErrorMessage] = useState('');
+  const [error, setError] = useState(false); 
 
   const currentDate = initData.todayDate;
+
   const handleDateChange = (date) => {
     if(date > currentDate){
-      setErrorMessage("Invalid Date")
+      setErrorMessage("Invalid Date");
+      setSelectedDate(date);
+      setError(true);
     }else{
       setSelectedDate(date);
       setErrorMessage("");
+      setError(false);
     }
   };
+
   const [credential, setCredential] = useState([]);
   const handleChange = (event) => {
     setCredential(event.target.value);
@@ -78,6 +87,7 @@ export default function ServiceProviderForm() {
   };
 
   const handleSubmitForm = (event) => {
+    if(!error){
       axios.post('https://jsonplaceholder.typicode.com/posts', values)
       .then(response => {
         console.log(response)
@@ -86,6 +96,11 @@ export default function ServiceProviderForm() {
         console.log(error)
       })
     console.log(values);
+    }
+    else{
+      console.log("There is error in your input");
+    }
+
   }
 
   const ITEM_HEIGHT = 48;
@@ -142,8 +157,7 @@ export default function ServiceProviderForm() {
           >
             {names.map((name) => (
               <MenuItem key={name} value={name} >
-                <Checkbox checked={credential.indexOf(name) > -1} />
-                <ListItemText primary={name} />
+              <ListItemText primary={name} />
               </MenuItem>
             ))}
           </Select>
@@ -161,13 +175,13 @@ export default function ServiceProviderForm() {
           />
 </Grid>
 
-<Grid item xs={12} >
+<Grid item xs={12}>
           <TextField
             label={CaasData.licenseNo}
             id="mui-theme-provider-outlined-input"
             name="licenseNo"
             value={values.licenseNo}
-            style={{ width: '60%'  }}
+            style={{ width: '60%' }}
             onChange={handleInputChange}
           /></Grid>
 
@@ -199,15 +213,15 @@ export default function ServiceProviderForm() {
             style={{ width: '60%'  }}
             onChange={handleInputChange}
           /></Grid>
-     <Grid item xs={12} >
+     <Grid item xs={12}>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <KeyboardDatePicker
-           
+              
               format="MM/dd/yyyy"
               margin="normal"
               id="date-picker-inline"
               label={CaasData.dateOfBirth}
-              style={{ width: '60%'  }}
+              style={{ width: '60%' }}
               value={selectedDate}
               onChange={handleDateChange}
               KeyboardButtonProps={{
@@ -217,10 +231,9 @@ export default function ServiceProviderForm() {
             />
             
           </MuiPickersUtilsProvider>
-          <div style={{fontWeight: 'bold', color: 'red'}}><span>{errorMessage}</span></div>
+          <div style={{ color: 'red'}}><span>{errorMessage}</span></div>
           </Grid>
-          
-          <Grid item xs={12} >
+    <Grid item xs={12} >
           <br />
           <div className={classes.root}>
             <Button variant="contained" color="primary" startIcon={<CloudUploadIcon />} onClick={handleSubmitForm}>
@@ -231,8 +244,6 @@ export default function ServiceProviderForm() {
             </Button>
           </div>
         </Grid>
-
-
       </Grid>
     </Form>
   );
