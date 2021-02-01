@@ -13,6 +13,7 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+import axios from "axios"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,6 +69,18 @@ export default function ServiceProviderForm() {
   };
 
 
+  const handleSubmitForm = (event) => {
+    axios.post('https://jsonplaceholder.typicode.com/posts', values)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    console.log(values);
+  }
+
+
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
   const MenuProps = {
@@ -82,7 +95,7 @@ export default function ServiceProviderForm() {
 
 
   return (
-    <Form title={CaasData.formTitle}>
+    <Form title={CaasData.formTitle} onSubmit={handleSubmitForm}>
       <Grid container spacing={3}>
         <Grid item xs={12}  >
 
