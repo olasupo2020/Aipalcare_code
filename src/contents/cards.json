@@ -1,63 +1,63 @@
 [
     {
         "index": 0,
-        "imgUrl": "../../images/cards/patient.jpg",
+        "imgUrl": "https://aipalcare.s3.amazonaws.com/patient.jpg",
         "content": "Every new patient or client needs to be register to capture general medical history or records",
         "title": " Patient Registration",
         "routeUrl": "/reg-sp"
     },
     {
         "index": 1,
-        "imgUrl": "../../images/cards/clinic.jpg",
+        "imgUrl": "https://aipalcare.s3.amazonaws.com/clinic.jpg",
         "content": "Every new patient or client needs to be register to capture general medical history or records",
         "title": "Clinical Correspondence",
         "routeUrl": ""
     },
     {
         "index": 2,
-        "imgUrl": "../../images/cards/org.jpg",
+        "imgUrl": "https://aipalcare.s3.amazonaws.com/org.jpg",
         "content": "Register your own company that can register service providers.",
         "title": "Organization Registration",
         "routeUrl": "/reg-org"
     },
     {
         "index": 3,
-        "imgUrl": "../../images/cards/pat.jpg",
+        "imgUrl": "https://aipalcare.s3.amazonaws.com/pat.jpg",
         "content": "Every new patient or client needs to be register to capture general medical history or records",
         "title": "Patient Diagnosis",
         "routeUrl": ""
     },
     {
         "index": 4,
-        "imgUrl": "../../images/cards/evaluation.jpg",
+        "imgUrl": "https://aipalcare.s3.amazonaws.com/evaluation.jpg",
         "content": "Every new patient or client needs to be register to capture general medical history or records",
         "title": " Physical Theraphy Evaluation",
         "routeUrl": ""
     },
     {
         "index": 5,
-        "imgUrl": "../../images/cards/progressreport.jpg",
+        "imgUrl": "https://aipalcare.s3.amazonaws.com/progressreport.jpg",
         "content": " Register your own company that can register service providers.",
         "title": "Progress Report",
         "routeUrl": ""
     },
     {
         "index": 6,
-        "imgUrl": "../../images/cards/therapist.jpg",
+        "imgUrl": "https://aipalcare.s3.amazonaws.com/therapist.jpg",
         "content": "Every new patient or client needs to be register to capture general medical history or records",
         "title": "Service Provider Registration",
         "routeUrl": "reg-sp"
     },
     {
         "index": 7,
-        "imgUrl": "../../images/cards/signature.jpg",
+        "imgUrl": "https://aipalcare.s3.amazonaws.com/signature.jpg",
         "content": "Every new patient or client needs to be register to capture general medical history or records",
         "title": "Signature Enrollment",
         "routeUrl": ""
     },
     {
         "index": 8,
-        "imgUrl": "../../images/cards/ace.jpg",
+        "imgUrl": "https://aipalcare.s3.amazonaws.com/ace.jpg",
         "content": "Every new patient or client needs to be register to capture general medical history or records",
         "title": "Speech Language Evaluation",
         "routeUrl": ""
