@@ -103,6 +103,18 @@ export default function ServiceProviderForm() {
 
   }
 
+  const handleSubmitForm = (event) => {
+    axios.post('https://jsonplaceholder.typicode.com/posts', values)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    console.log(values);
+  }
+
+
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
   const MenuProps = {
