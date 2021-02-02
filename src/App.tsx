@@ -1,13 +1,13 @@
 //import logo from './images/logos/png10.png';
 import React from 'react';
 import './App.css';
-// import Amplify from 'aws-amplify';
-// import awsconfig from './aws-exports';
+//import Amplify from 'aws-amplify';
+//import awsconfig from './aws-exports';
 import Routes from './Routes';
 
-// import { withAuthenticator } from '@aws-amplify/ui-react';
+//import { withAuthenticator } from '@aws-amplify/ui-react';
 
-// Amplify.configure(awsconfig)
+//Amplify.configure(awsconfig)
 
 function App() {
   return (
@@ -20,5 +20,5 @@ function App() {
   );
 }
 
-// export default withAuthenticator(App);
+//export default withAuthenticator(App);
 export default App;
