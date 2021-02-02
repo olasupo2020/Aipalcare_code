@@ -7,7 +7,7 @@ import {
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { TextField, Grid, Button } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
-import { UseForm, Form } from '../models/UseForm';
+import { UseForm, Form } from '../Models/UseForm';
 import DateFnsUtils from '@date-io/date-fns';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import ScheduledToday from './ScheduledToday';
