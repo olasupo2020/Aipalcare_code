@@ -1,4 +1,4 @@
-import { OrganizationModel } from "../models/OrganizationModel";
+import { OrganizationModel } from "../Models/OrganizationModel";
 import apis from '../contents/api.json';
 
 import axios from "axios";

@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Tabs, Tab, Typography, Box, Avatar } from '@material-ui/core';
 import { UseForm, Form } from '../models/UseForm';
 import SessionNotesForm from './SessionNotesForm';
-import { SessionNotes } from '../models/SessionNotes';
+import { SessionNotes } from '../Models/SessionNotes';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -167,55 +167,36 @@ export default function SessionNotesPanel() {
 
         <TabPanel value={value} index={0}>
 
-          <SessionNotesForm data={panel1Data[0]} />
-
+          <SessionNotesForm data={panel1Data} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-
-          <SessionNotesForm data={panel1Data[1]} />
-
+          {headerData[1].patientName} {headerData[1].sessionNotes}
         </TabPanel>
         <TabPanel value={value} index={2}>
-
-          <SessionNotesForm data={panel1Data[2]} />
-
+          {headerData[2].patientName} {headerData[2].sessionNotes}
         </TabPanel>
         <TabPanel value={value} index={3}>
-
-          <SessionNotesForm data={panel1Data[3]} />
-
+          {headerData[3].patientName} {headerData[3].sessionNotes}
         </TabPanel>
         <TabPanel value={value} index={4}>
-
-          <SessionNotesForm data={panel1Data[4]} />
-
+          {headerData[4].patientName} {headerData[4].sessionNotes}
         </TabPanel>
         <TabPanel value={value} index={5}>
-
-          <SessionNotesForm data={panel1Data[5]} />
-
+          {headerData[5].patientName} {headerData[5].sessionNotes}
         </TabPanel>
         <TabPanel value={value} index={6}>
-
-          <SessionNotesForm data={panel1Data[6]} />
-
+          {headerData[6].patientName} {headerData[6].sessionNotes}
         </TabPanel>
         <TabPanel value={value} index={7}>
-
-          <SessionNotesForm data={panel1Data[7]} />
-
+          {headerData[7].patientName} {headerData[7].sessionNotes}
         </TabPanel>
         <TabPanel value={value} index={8}>
-
-          <SessionNotesForm data={panel1Data[8]} />
-
+          {headerData[8].patientName} {headerData[8].sessionNotes}
         </TabPanel>
         <TabPanel value={value} index={9}>
-
-          <SessionNotesForm data={panel1Data[9]} />
-
+          {headerData[9].patientName} {headerData[9].sessionNotes}
         </TabPanel>
       </div>
-    </Form>
+    </Form >
   );
 }
