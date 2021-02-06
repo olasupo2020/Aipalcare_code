@@ -1,4 +1,5 @@
 import React from "react";
+
 import BootstrapTable from "react-bootstrap-table-next";
 import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
 import ToolkitProvider, {
@@ -8,6 +9,8 @@ import ToolkitProvider, {
 import paginationFactory from "react-bootstrap-table2-paginator";
 
 import * as TableUtil from "./Table-Utils";
+import { RouteConstants } from "../../constants/CommonConstants";
+import { Link } from "react-router-dom";
 const { ToggleList } = ColumnToggle;
 const { SearchBar } = Search;
 
@@ -28,7 +31,11 @@ class ClientsTable extends React.Component {
         {
             dataField: "patientId",
             text: "Id# ",
-            formatter: (cell, row) => <a href={cell} > {cell} </a>,
+            formatter: (cell, row) => <Link to={{
+                pathname: RouteConstants.CLIENT_FORM,
+                search: `?patientId=${cell}`,
+                state: { data: cell }
+            }}> {cell} </Link>,
             sort: true,
             hidden: false
         },
@@ -81,6 +88,7 @@ class ClientsTable extends React.Component {
 
     }
 
+    //API
     clients = [
         {
             patientId: "199204884",
