@@ -3,25 +3,39 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
 
-export function UseForm(initialValues) {
+export function UseForm(initialValues, validateOnChange = false, validate) {
   const [values, setValues] = useState(initialValues);
+  const [errors, setErrors] = useState({});
 
   const handleInputChange = e => {
+
+    e.preventDefault();
     const { name, value } = e.target;
 
     setValues({
       ...values,
       [name]: value
     });
+    if (validateOnChange)
+    validate({ [name]: value })
 
   }
 
+  /*
+  const resetForm = () => {
+    setValues(initialValues);
+    setErrors({})
+}*/
 
   return {
 
     values,
     setValues,
-    handleInputChange
+    errors,
+    setErrors,
+    handleInputChange,
+    //resetForm
+
   }
 
 }
@@ -47,6 +61,7 @@ const useStyles = makeStyles(theme => ({
 export function Form(props) {
 
   const classes = useStyles();
+  const { children, ...other } = props;
   return (
 <Paper className={classes.paper} style={{margin:'8%'}}>
     <form className={classes.root} >
