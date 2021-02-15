@@ -60,7 +60,6 @@ export default function ServiceProviderForm() {
   const [isError, setIsError] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const currentDate = new Date();
-  const error = null;
 
 
 
@@ -77,7 +76,7 @@ export default function ServiceProviderForm() {
         validate({ [name]: value })
   };*/
 
-  const validate = (fieldValues = values, currentDate) => {
+  const validate = (fieldValues = values, defaultDate) => {
     let temp = { ...errors }
     if ('firstName' in fieldValues)
         temp.firstName = fieldValues.firstName ? "" : "This field is required."
@@ -97,17 +96,20 @@ export default function ServiceProviderForm() {
         temp.licenseNo = fieldValues.licenseNo.length > 9 ? "" : "Minimum 10 numbers required."
     if ('divisionNames' in fieldValues)
         temp.divisionNames = fieldValues.divisionNames.length != 0 ? "" : "This field is required."
+    if ('date' in fieldValues)
+        temp.date = fieldValues.date.length != 0 || fieldValues.date == defaultDate ? "" : "This field is required."
     setErrors({
         ...temp
     })
 
     if (fieldValues == values)
         return Object.values(temp).every(err => err == "")
+  
 }
 
 const handleDateChange = (date) => {
   
-  if(date > currentDate || date === defaultDate){
+  if(date > currentDate){
     setErrors({date: "Invalid Date"});
     setSelectedDate(date);
     setIsError(true);
@@ -128,7 +130,7 @@ const {
   handleInputChange
 } = UseForm(initData, true, validate);
 
-//const isEnabled = validate() && !isError;
+
 const handleSubmitForm  = e => {
     e.preventDefault()
     console.log(isError);
@@ -295,7 +297,7 @@ const handleSubmitForm  = e => {
     <Grid item xs={12} >
           <br />
           <div className={classes.root}>
-            <Button variant="contained" color="primary" startIcon={<CloudUploadIcon />}  type="submit" onClick={handleSubmitForm} disabled={!errors}>
+            <Button variant="contained" color="primary" startIcon={<CloudUploadIcon />}  type="submit" onClick={handleSubmitForm}>
               {CaasData.saveButton}
             </Button>
             <Button variant="contained" color="primary" startIcon={<EditIcon />} >
