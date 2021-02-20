@@ -112,7 +112,6 @@ const handleDateChange = (date) => {
   if(date > currentDate){
     setErrors({date: "Invalid Date"});
     setSelectedDate(date);
-    setIsError(true);
   }else{
     setSelectedDate(date);
     values.date = date;
@@ -189,7 +188,7 @@ const handleSubmitForm  = e => {
         <FormControl style={{width: '100%', margin:'0 20%' }}
          error={Boolean(errors?.divisionNames)}
          >
-           <InputLabel id="demo-mutiple-name-label">Division</InputLabel>
+           <InputLabel id="demo-mutiple-name-label">{CaasData.specialization}</InputLabel>
             <Select
            
           
