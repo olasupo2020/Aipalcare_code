@@ -21,11 +21,17 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
+<<<<<<< HEAD
 
   invalid_input: {
     color: "red"
   }
 
+=======
+  invalid_input: {
+    color: "red"
+  }
+>>>>>>> 161af7f63faa46b228c8a2f7916acc6dd9c39922
 }));
 
 const initData = {
@@ -48,11 +54,17 @@ const names = [
 ];
 
 
+
+
 export default function ServiceProviderForm() {
   const classes = useStyles();
   const { values, setValues, handleInputChange } = UseForm(initData);
 
   const [selectedDate, setSelectedDate] = useState(new Date('2014-08-18T21:11:54'));
+  const [errorMessage, setErrorMessage] = useState('');
+  const [error, setError] = useState(false);
+
+  const currentDate = initData.todayDate;
 
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
@@ -72,6 +84,7 @@ export default function ServiceProviderForm() {
       setError(false);
     }
   };
+
   const [credential, setCredential] = useState([]);
   const handleChange = (event) => {
     setCredential(event.target.value);
@@ -88,7 +101,6 @@ export default function ServiceProviderForm() {
     setCredential(value);
   };
 
-
   const handleSubmitForm = (event) => {
     if (!error) {
       axios.post('https://jsonplaceholder.typicode.com/posts', values)
@@ -103,7 +115,10 @@ export default function ServiceProviderForm() {
     else {
       console.log("There is error in your input");
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 161af7f63faa46b228c8a2f7916acc6dd9c39922
   }
 
 
@@ -124,19 +139,27 @@ export default function ServiceProviderForm() {
   return (
     <Form title={CaasData.formTitle} onSubmit={handleSubmitForm}>
       <Grid container spacing={3}>
-        <Grid item xs={12}  >
+        <Grid item xs={12} >
 
           <TextField
             label={CaasData.firstName}
+<<<<<<< HEAD
             // variant="outlined"
             id="mui-theme-provider-outlined-input"
             name="firsttName"
             value={values.firsttName}
+=======
+
+            id="mui-theme-provider-standard-input"
+            name="firstName"
+            value={values.firstName}
+>>>>>>> 161af7f63faa46b228c8a2f7916acc6dd9c39922
             style={{ width: '60%' }}
             onChange={handleInputChange}
           />
         </Grid>
         <Grid item xs={12} >
+<<<<<<< HEAD
           <TextField
             label={CaasData.lastName}
 
@@ -167,6 +190,139 @@ export default function ServiceProviderForm() {
               ))}
             </Select>
           </FormControl>
+
+        </Grid>
+        <Grid item xs={12} >
+          <TextField
+            label={CaasData.nhpn}
+            id="mui-theme-provider-outlined-input"
+            name="nhpn"
+            value={values.nhpn}
+            style={{ width: '60%' }}
+            onChange={handleInputChange}
+          />
+        </Grid>
+
+        <Grid item xs={12}>
+          <TextField
+            label={CaasData.licenseNo}
+            id="mui-theme-provider-outlined-input"
+            name="licenseNo"
+            value={values.licenseNo}
+            style={{ width: '60%' }}
+            onChange={handleInputChange}
+          /></Grid>
+
+        <Grid item xs={12} >
+          <TextField
+            label={CaasData.govtBody}
+            id="mui-theme-provider-outlined-input"
+            name="govtBody"
+            value={values.govtBody}
+=======
+          <TextField
+            label={CaasData.lastName}
+
+            id="mui-theme-provider-outlined-input"
+            name="lastName"
+            value={values.lastName}
+>>>>>>> 161af7f63faa46b228c8a2f7916acc6dd9c39922
+            style={{ width: '60%' }}
+            onChange={handleInputChange}
+          />
+        </Grid>
+<<<<<<< HEAD
+        <Grid item xs={12} >
+          <TextField
+            label={CaasData.credential}
+            id="mui-theme-provider-outlined-input"
+            name="credential"
+            value={values.setCredential}
+            style={{ width: '60%' }}
+            onChange={handleInputChange}
+          /></Grid>
+        <Grid item xs={12} >
+          <TextField
+            label={CaasData.year}
+            id="mui-theme-provider-outlined-input"
+            name="year"
+            value={values.year}
+            style={{ width: '60%' }}
+            onChange={handleInputChange}
+          /></Grid>
+        <Grid item xs={12}>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker
+
+              format="MM/dd/yyyy"
+              margin="normal"
+              id="date-picker-inline"
+              label={CaasData.dateOfBirth}
+              style={{ width: '60%' }}
+              value={selectedDate}
+              onChange={handleDateChange}
+              KeyboardButtonProps={{
+                'aria-label': 'change date',
+              }}
+
+            />
+
+          </MuiPickersUtilsProvider>
+          <div style={{ color: 'red' }}><span>{errorMessage}</span></div>
+        </Grid>
+        <Grid item xs={12} >
+          <br />
+          <div className={classes.root}>
+            <Button variant="contained" color="primary" startIcon={<CloudUploadIcon />} onClick={handleSubmitForm}>
+              {CaasData.saveButton}
+            </Button>
+            <Button variant="contained" color="primary" startIcon={<EditIcon />} >
+              {CaasData.editButton}
+            </Button>
+          </div>
+        </Grid>
+      </Grid>
+
+
+      {/* <Select
+            labelId="demo-mutiple-checkbox-label"
+            id="demo-mutiple-checkbox"
+            value={credential}
+            onChange={handleChange}
+            input={<Input />}
+            style={{ width: 310 }}
+
+          >
+            {names.map((name) => (
+              <MenuItem key={name} value={name} >
+                <Checkbox checked={credential.indexOf(name) > -1} />
+                <ListItemText primary={name} />
+              </MenuItem>
+            ))}
+          </Select>
+
+=======
+
+        <Grid item xs={12} >
+          <FormControl style={{ width: '100%', margin: '0 20%' }} >
+            <InputLabel id="demo-mutiple-name-label">Select</InputLabel>
+            <Select
+
+              labelId="demo-simple-select-outlined-label"
+              id="demo-simple-select-outlined"
+              onChange={handleChange}
+              input={<Input />}
+              style={{ width: '60%' }}
+
+            >
+              {names.map((name) => (
+                <MenuItem key={name} value={name} >
+                  <ListItemText primary={name} />
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+>>>>>>> 161af7f63faa46b228c8a2f7916acc6dd9c39922
 
         </Grid>
         <Grid item xs={12} >
@@ -249,113 +405,13 @@ export default function ServiceProviderForm() {
             </Button>
           </div>
         </Grid>
-      </Grid>
-
-
-      {/* <Select
-            labelId="demo-mutiple-checkbox-label"
-            id="demo-mutiple-checkbox"
-            value={credential}
-            onChange={handleChange}
-            input={<Input />}
-            style={{ width: 310 }}
-
-          >
-            {names.map((name) => (
-              <MenuItem key={name} value={name} >
-                <Checkbox checked={credential.indexOf(name) > -1} />
-                <ListItemText primary={name} />
-              </MenuItem>
-            ))}
-          </Select>
-
-
-        </Grid>
-
-        <Grid item xs={12}>
-          <TextField
-            label={CaasData.nhpn}
-            variant="outlined"
-            id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
-            style={{ width: 300 }}
-            onChange={handleInputChange}
-          />
-
-          <TextField
-            label={CaasData.licenseNo}
-            variant="outlined"
-            id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
-            style={{ width: 300 }}
-            onChange={handleInputChange}
-          />
-
-          <TextField
-            label={CaasData.govtBody}
-            variant="outlined"
-            id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
-            style={{ width: 300 }}
-            onChange={handleInputChange}
-          />
-        </Grid>
-
-        <Grid item xs={12}>
-          <TextField
-            label={CaasData.credential}
-            variant="outlined"
-            id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
-            style={{ width: 300 }}
-            onChange={handleInputChange}
-          />
-          <TextField
-            label={CaasData.year}
-            variant="outlined"
-            id="mui-theme-provider-outlined-input"
-            name="clientName"
-            value={values.clientName}
-            style={{ width: 300 }}
-            onChange={handleInputChange}
-          />
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-
-            <KeyboardDatePicker
-              disableToolbar
-              variant="inline"
-              format="MM/dd/yyyy"
-              margin="normal"
-              id="date-picker-inline"
-              label={CaasData.dateOfBirth}
-              style={{ width: 300 }}
-              value={selectedDate}
-              onChange={handleDateChange}
-              KeyboardButtonProps={{
-                'aria-label': 'change date',
-              }}
-            />
-
-          </MuiPickersUtilsProvider>
-        </Grid>
-        <Grid item xs={12}>
-          <br />
-          <div className={classes.root}>
-            <Button variant="contained" color="primary" startIcon={<CloudUploadIcon />}>
-              {CaasData.saveButton}
-            </Button>
-            <Button variant="contained" color="primary" startIcon={<EditIcon />} >
-              {CaasData.editButton}
-            </Button>
-          </div>
-        </Grid>
+<<<<<<< HEAD
 
 
       </Grid> */}
+=======
+      </Grid>
+>>>>>>> 161af7f63faa46b228c8a2f7916acc6dd9c39922
     </Form>
   );
 }

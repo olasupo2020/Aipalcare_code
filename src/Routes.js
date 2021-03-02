@@ -19,6 +19,7 @@ import ServiceProviders from './forms/ServiceProviders';
 import Billing from './forms/Billing';
 import AlliedHealthcare from './forms/AlliedHealthcare';
 import Notifications from './forms/Notifications';
+import ClientForm from './forms/clients/ClientForm';
 
 
 export default class Routes extends Component {
@@ -34,6 +35,7 @@ export default class Routes extends Component {
                     <Route exact path={RouteConstants.NOTESPANEL} render={props => <SessionNotesPanel {...props} />} />
                     <Route exact path={RouteConstants.CALENDAR} render={props => <CalendarForm {...props} />} />
                     <Route exact path={RouteConstants.SESSION} render={props => <SessionNotesForm {...props} />} />
+                    <Route exact path={RouteConstants.CLIENT_FORM} render={props => <ClientForm {...props} />} />
                     <Route exact path={RouteConstants.DASHBOARD} component={Dashboard} />
                     <Route exact path={RouteConstants.FORMWRAP} component={FormWrap} />
                     <Route exact path={RouteConstants.PROFILE} component={Profile} />
