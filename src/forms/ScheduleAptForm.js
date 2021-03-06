@@ -7,12 +7,14 @@ import {
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { TextField, Grid, Button } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
-import { UseForm, Form } from '../Models/UseForm';
+import { UseForm, Form } from '../models/UseForm';
 import DateFnsUtils from '@date-io/date-fns';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import ScheduledToday from './ScheduledToday';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import axios from "axios";
+import CaasData from '../contents/sp-registration.json'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,6 +50,7 @@ const top100Films = [
 
 export default function ScheduleAptForm() {
 
+  const classes = useStyles();
   const { values, setValues, handleInputChange } = UseForm(initData);
 
   const [selectedDate, setSelectedDate] = useState(new Date('2014-08-18T21:11:54'));
@@ -55,21 +58,67 @@ export default function ScheduleAptForm() {
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
-  const classes = useStyles();
+  const [credential, setCredential] = useState([]);
+  const handleChange = (event) => {
+    setCredential(event.target.value);
+  };
+
+  const handleChangeMultiple = (event) => {
+    const { options } = event.target;
+    const value = [];
+    for (let i = 0, l = options.length; i < l; i += 1) {
+      if (options[i].selected) {
+        value.push(options[i].value);
+      }
+    }
+    setCredential(value);
+  };
+
+  const handleSubmitForm = (event) => {
+    axios.post('https://jsonplaceholder.typicode.com/posts', values)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    console.log(values);
+  }
+
+  // const ITEM_HEIGHT = 48;
+  // const ITEM_PADDING_TOP = 8;
+  // const MenuProps = {
+  //   PaperProps: {
+  //     style: {
+  //       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+  //       width: 250,
+  //     },
+  //   },
+  // };
+
+
+  // const { values, setValues, handleInputChange } = UseForm(initData);
+
+  // const [selectedDate, setSelectedDate] = useState(new Date('2014-08-18T21:11:54'));
+
+
+  // const handleDateChange = (date) => {
+  //   setSelectedDate(date);
+  // };
+  // const classes = useStyles();
 
   return (
- 
-    
-      <Form title="Appointment Form">
-        <Grid container>
-          <Grid item xs={4}>
+    <div style={{ margin: '5%' }}>
+      <Form title="Appointment Form" onSubmit={handleSubmitForm}>
+        <Grid containerspacing={5}>
+          <Grid item xs={6}>
             <TextField
               label="First Name"
               variant="outlined"
               id="mui-theme-provider-outlined-input"
               name="clientName"
               value={values.clientName}
-              style={{ width: 400 }}
+              style={{ width: 300 }}
               onChange={handleInputChange}
             />
             <TextField
@@ -78,21 +127,21 @@ export default function ScheduleAptForm() {
               id="mui-theme-provider-outlined-input"
               name="clientName"
               value={values.clientName}
-              style={{ width: 400 }}
+              style={{ width: 300 }}
               onChange={handleInputChange}
             />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={2}>
             <Autocomplete
               id="mui-theme-provider-outlined-input"
               options={top100Films}
               getOptionLabel={(option) => option.title}
-              style={{ width: 400 }}
+              style={{ width: 300 }}
               renderInput={(params) => <TextField {...params} label="Service Providers" variant="outlined" />}
             />
           </Grid>
 
-          <Grid item xs={3}>
+          <Grid item xs={7}>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <Grid container justify="space-around">
                 <KeyboardDatePicker
@@ -123,12 +172,12 @@ export default function ScheduleAptForm() {
               </Grid>
             </MuiPickersUtilsProvider>
           </Grid>
-          <Grid item xs={2}>
-            <br />
-            <Button variant="contained" color="primary">
-              Create
+          {/* <Grid item xs={3}>
+          <br ></br>
+          <Button variant="contained" color="primary">
+            Create
             </Button>
-          </Grid>
+        </Grid> */}
           <Grid item xs={8} style={{ padding: '5%' }}>
 
             <h4>Today's Schedules</h4>
@@ -136,17 +185,21 @@ export default function ScheduleAptForm() {
 
             <br></br>
             <div className={classes.root}>
-            <Button variant="contained" color="primary" startIcon={<DeleteIcon />}>
-              Delete
+              <Button variant="contained" color="primary" startIcon={<DeleteIcon />}>
+                Delete
             </Button>
-            <Button variant="contained" color="primary" startIcon={<EditIcon />} >
-         Edit
+              <Button variant="contained" color="primary" startIcon={<EditIcon />} >
+                Edit
+            </Button>
+              <Button variant="contained" color="primary">
+                Create
             </Button>
             </div>
           </Grid>
 
         </Grid>
       </Form>
-  
+    </div>
   )
 }
+
