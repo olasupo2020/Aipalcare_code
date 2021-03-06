@@ -17,7 +17,7 @@ export function UseForm(initialValues, validateOnChange = false, validate) {
       [name]: value
     });
     if (validateOnChange)
-      validate({ [name]: value })
+    validate({ [name]: value })
 
   }
 
