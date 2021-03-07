@@ -8,6 +8,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { Form } from '../../models/UseForm';
+import MedicalFormWrap from './MedicalFormWrap';
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
@@ -118,7 +119,7 @@ export default function ClientForm(props) {
                         </Tabs>
                     </AppBar>
                     <TabPanel value={value} index={0}>
-                        Medical Information
+                        <MedicalFormWrap />
                     </TabPanel>
                     <TabPanel value={value} index={1}>
                         Insurance Detail
