@@ -212,7 +212,7 @@ function NavigationComponent(props) {
           <Typography variant="h6" Wrap>
             <img src={logo} alt="logo" />
           </Typography>
-          <div style={{ marginLeft: '52%' }}>
+          <div style={{ marginLeft: '40%' }}>
             <ButtonGroup variant="contained" color='secondary' >
               <Button startIcon={<TodayIcon />} onClick={calendar} >Calendar</Button>
               <Button startIcon={<TimelapseIcon />} >Yesterday</Button>
