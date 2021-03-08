@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { Form } from '../../models/UseForm';
 import MedicalFormWrap from './MedicalFormWrap';
+import DocumentAccordions from './DocumentAccordions';
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
@@ -128,7 +129,7 @@ export default function ClientForm(props) {
                         Primary Care
                     </TabPanel>
                     <TabPanel value={value} index={3}>
-                        Documents
+                        <DocumentAccordions />
                     </TabPanel>
                 </div>
             </Form>
