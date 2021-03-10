@@ -92,9 +92,6 @@ export default function NewPatientForm() {
                         style={{ width: 400 }}
                         onChange={handleInputChange}
                     />
-
-
-
                 </Grid>
                 <Grid item xs={12}>
                     <br />
