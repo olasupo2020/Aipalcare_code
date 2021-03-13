@@ -76,10 +76,6 @@ export default function StickyHeadTable() {
         setPage(newPage);
     };
 
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(+event.target.value);
-        setPage(0);
-    };
 
     return (
         <div style={{ margin: '5%' }}>
