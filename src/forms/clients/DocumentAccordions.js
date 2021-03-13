@@ -38,7 +38,7 @@ export default function DocumentAccordions() {
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
                 >
-                    <Typography className={classes.heading}>Evaluation</Typography>
+                    <Typography className={classes.heading}>Evaluations</Typography>
                     <Typography className={classes.secondaryHeading}>I am an accordion</Typography>
                 </AccordionSummary>
                 <AccordionDetails>

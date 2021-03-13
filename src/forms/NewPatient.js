@@ -121,7 +121,7 @@ export default function StickyHeadTable() {
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onChangePage={handleChangePage}
-                    onChangeRowsPerPage={handleChangeRowsPerPage}
+                // onChangeRowsPerPage={handleChangeRowsPerPage}
                 />
             </Paper>
         </div>
