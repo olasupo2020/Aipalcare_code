@@ -1,0 +1,13 @@
+{
+    "firstName": "First Name",
+    "middleName": "Middle Name",
+    "lastName": "Last Name",
+    "birthDate": "Date of Birth",
+    "relationship": "Relationship",
+    "practice": "Practice",
+    "phoneNumber": "Phone Number",
+    "faxNumber": "Fax Number",
+    "emailAddress": "Email Address",
+    "address": "Address",
+    "postalCode": "Postal Code"
+}

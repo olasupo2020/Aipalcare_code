@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { TextField, Grid, Button } from '@material-ui/core';
 import { UseForm, Form } from '../models/UseForm';
@@ -9,13 +9,13 @@ import CaaSData from '../contents/patient-basic.json';
 import NewPatientModel from '../models/NewPatientModel';
 import { NewPatientService } from '../services/NewPatientService';
 
-
 import {
     MuiPickersUtilsProvider,
     KeyboardDatePicker,
 } from '@material-ui/pickers';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
             margin: theme.spacing(1),
@@ -37,7 +37,8 @@ const top100Films = [
 
 
 
-export default function NewPatientForm() {
+
+export default function PrimaryContactForm() {
 
     //create service instance
     const svc = new NewPatientService;
@@ -52,64 +53,73 @@ export default function NewPatientForm() {
     }
 
     return (
-        <Form title="New Patient Form">
-            <p> General Information</p>
+        <Form title="Primary Contact">
 
             <Grid container>
                 <Grid item xs={10}>
+
                     <TextField
                         label={CaaSData.firstName}
                         variant="outlined"
                         name="firstName"
                         value={values.firstName}
                         style={{ width: 400 }}
-                        onChange={handleInputChange}
-                    />
+                        onChange={handleInputChange} />
                     <TextField
                         label={CaaSData.middleName}
                         variant="outlined"
-                        value={values.middleName}
                         name="middleName"
+                        value={values.middleName}
                         style={{ width: 400 }}
-                        onChange={handleInputChange}
-                    />
+                        onChange={handleInputChange} />
                     <TextField
                         label={CaaSData.lastName}
                         variant="outlined"
                         value={values.lastName}
                         name="lastName"
                         style={{ width: 400 }}
-                        onChange={handleInputChange}
-                    />
+                        onChange={handleInputChange} />
                     <TextField
-                        label={CaaSData.birthDate}
+                        label={CaaSData.emailAddress}
                         variant="outlined"
-                        name="birthDate"
-                        value={values.birthDate}
+                        name="emailAddress"
+                        value={values.emailAddress}
                         style={{ width: 400 }}
-                        onChange={handleInputChange}
-                    />
-
-                </Grid>
-
-                <Grid item xs={10}>
+                        onChange={handleInputChange} />
+                    <TextField
+                        label={CaaSData.relationship}
+                        variant="outlined"
+                        name="relationship"
+                        value={values.relationship}
+                        style={{ width: 400 }}
+                        onChange={handleInputChange} />
                     <TextField
                         label={CaaSData.address}
                         variant="outlined"
                         name="address"
                         value={values.address}
                         style={{ width: 400 }}
-                        onChange={handleInputChange}
-                    />
+                        onChange={handleInputChange} />
+                    <TextField
+                        label={CaaSData.phoneNumber}
+                        variant="outlined"
+                        name="phoneNumber"
+                        value={values.phoneNumber}
+                        style={{ width: 400 }}
+                        onChange={handleInputChange} />
+
                 </Grid>
+
+
                 <Grid item xs={10}>
                     <br />
                     <div className={classes.root}>
+
                         <Button variant="contained" color="primary" startIcon={<CloudUploadIcon />}
                             onClick={handleOnClick}>
                             {CaaSData.saveButton}
                         </Button>
-                        <Button variant="contained" color="primary" startIcon={<EditIcon />} >
+                        <Button variant="contained" color="primary" startIcon={<EditIcon />}>
                             {CaaSData.editButton}
                         </Button>
                     </div>
