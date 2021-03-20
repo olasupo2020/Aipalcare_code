@@ -8,11 +8,12 @@ import F6 from "./F6";
 import F7 from "./F7";
 import F8 from "./F8";
 import F9 from "./F9";
-import Confirmation from "./Confirmation";
-import Succeeded from "./Succeeded";
+//import F9 from "../../F9";
+import Confirmation from "../../Confirmation";
+import Succeeded from "../../Succeeded";
 
 
-export class UserForm extends Component {
+export class MedicalFormWrap extends Component {
   state = {
     step: 1,
     firstName: "",
@@ -70,7 +71,7 @@ export class UserForm extends Component {
     agency: "",
     pm: "",
     history: "",
-    previous: "", 
+    previous: "",
     vision: "",
     hear: "",
     equip: "",
@@ -137,26 +138,26 @@ export class UserForm extends Component {
 
   render() {
     const { step } = this.state;
-    const { 
+    const {
       firstName, lastName, address, dob, socSec, firstName2, lastName2, employer,
-    phone, socSec2, emailAddress, diagnosis, rtf, pn, nop, address2, op, pn2, nop2,
-    address3, op2, name, address4, phone2, socSec3, pi, address5, pid, group, phone3, cn,
-    rtp, dob2, si, address6, pid2, group2, phone4, cn2, rpt2, dob3, rpc, childsName, dob4,
-    nopcf, rltnshp, cd, wrytt, ptc, omcp, ghoyc, hasYour, agency, pm, history, previous,
-    vision, hear, equip, diet, allergy, comms, ap, ability, handle, redirect, sb, hand, ws, vs,
-    di, pls, surgery, tc, precaution, pt, term, tod, bw, lohs, comp, concern, desc, ro,
-    coaf, wi, sfw, u2ws, sc, dfac, fs, ds, uc, cws, dp, current, goals
-     } = this.state;
-    const values = { 
+      phone, socSec2, emailAddress, diagnosis, rtf, pn, nop, address2, op, pn2, nop2,
+      address3, op2, name, address4, phone2, socSec3, pi, address5, pid, group, phone3, cn,
+      rtp, dob2, si, address6, pid2, group2, phone4, cn2, rpt2, dob3, rpc, childsName, dob4,
+      nopcf, rltnshp, cd, wrytt, ptc, omcp, ghoyc, hasYour, agency, pm, history, previous,
+      vision, hear, equip, diet, allergy, comms, ap, ability, handle, redirect, sb, hand, ws, vs,
+      di, pls, surgery, tc, precaution, pt, term, tod, bw, lohs, comp, concern, desc, ro,
+      coaf, wi, sfw, u2ws, sc, dfac, fs, ds, uc, cws, dp, current, goals
+    } = this.state;
+    const values = {
       firstName, lastName, address, dob, socSec, firstName2, lastName2, employer,
-    phone, socSec2, emailAddress, diagnosis, rtf, pn, nop, address2, op, pn2, nop2,
-    address3, op2, name, address4, phone2, socSec3, pi, address5, pid, group, phone3, cn,
-    rtp, dob2, si, address6, pid2, group2, phone4, cn2, rpt2, dob3, rpc, childsName, dob4,
-    nopcf, rltnshp, cd, wrytt, ptc, omcp, ghoyc, hasYour, agency, pm, history, previous,
-    vision, hear, equip, diet, allergy, comms, ap, ability, handle, redirect, sb, hand, ws, vs,
-    di, pls, surgery, tc, precaution, pt, term, tod, bw, lohs, comp, concern, desc, ro,
-    coaf, wi, sfw, u2ws, sc, dfac, fs, ds, uc, cws, dp, current, goals
-     };
+      phone, socSec2, emailAddress, diagnosis, rtf, pn, nop, address2, op, pn2, nop2,
+      address3, op2, name, address4, phone2, socSec3, pi, address5, pid, group, phone3, cn,
+      rtp, dob2, si, address6, pid2, group2, phone4, cn2, rpt2, dob3, rpc, childsName, dob4,
+      nopcf, rltnshp, cd, wrytt, ptc, omcp, ghoyc, hasYour, agency, pm, history, previous,
+      vision, hear, equip, diet, allergy, comms, ap, ability, handle, redirect, sb, hand, ws, vs,
+      di, pls, surgery, tc, precaution, pt, term, tod, bw, lohs, comp, concern, desc, ro,
+      coaf, wi, sfw, u2ws, sc, dfac, fs, ds, uc, cws, dp, current, goals
+    };
 
     switch (step) {
       case 1:
@@ -185,61 +186,61 @@ export class UserForm extends Component {
             values={values}
           />
         );
-        case 4:
-          return (
-            <F4
-              nextStep={this.nextStep}
-              prevStep={this.prevStep}
-              handleChange={this.handleChange}
-              values={values}
-            />
-          );
-          case 5:
-            return (
-              <F5
-                nextStep={this.nextStep}
-                prevStep={this.prevStep}
-                handleChange={this.handleChange}
-                values={values}
-              />
-            );
-            case 6:
-              return (
-                <F6
-                  nextStep={this.nextStep}
-                  prevStep={this.prevStep}
-                  handleChange={this.handleChange}
-                  values={values}
-                />
-              );
-              case 7:
-                return (
-                  <F7
-                    nextStep={this.nextStep}
-                    prevStep={this.prevStep}
-                    handleChange={this.handleChange}
-                    values={values}
-                  />
-                );
-                case 8:
-                  return (
-                    <F8
-                      nextStep={this.nextStep}
-                      prevStep={this.prevStep}
-                      handleChange={this.handleChange}
-                      values={values}
-                    />
-                  );
-                  case 9:
-                    return (
-                      <F9
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleChange}
-                        values={values}
-                      />
-                    );
-        case 10:
+      case 4:
+        return (
+          <F4
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        );
+      case 5:
+        return (
+          <F5
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        );
+      case 6:
+        return (
+          <F6
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        );
+      case 7:
+        return (
+          <F7
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        );
+      case 8:
+        return (
+          <F8
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        );
+      case 9:
+        return (
+          <F9
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        );
+      case 10:
         return (
           <Confirmation
             nextStep={this.nextStep}
@@ -255,4 +256,4 @@ export class UserForm extends Component {
   }
 }
 
-export default UserForm;
+export default MedicalFormWrap;

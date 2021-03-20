@@ -8,6 +8,9 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { Form } from '../../models/UseForm';
+import MedicalFormWrap from './MedicalFormWrap';
+import DocumentAccordions from './DocumentAccordions';
+import SlpForm from '../evaluationforms/SlpForm';
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
@@ -114,11 +117,12 @@ export default function ClientForm(props) {
                             <Tab label="Medical Info" {...a11yProps(0)} />
                             <Tab label="Insurance Detail" {...a11yProps(1)} />
                             <Tab label="Primary Care" {...a11yProps(2)} />
-                            <Tab label="Documents" {...a11yProps(3)} />
+                            <Tab label="Evaluations" {...a11yProps(3)} />
+                            <Tab label="Documents" {...a11yProps(4)} />
                         </Tabs>
                     </AppBar>
                     <TabPanel value={value} index={0}>
-                        Medical Information
+                        <MedicalFormWrap />
                     </TabPanel>
                     <TabPanel value={value} index={1}>
                         Insurance Detail
@@ -127,7 +131,12 @@ export default function ClientForm(props) {
                         Primary Care
                     </TabPanel>
                     <TabPanel value={value} index={3}>
-                        Documents
+
+                        <SlpForm />
+
+                    </TabPanel>
+                    <TabPanel value={value} index={4}>
+                        <DocumentAccordions />
                     </TabPanel>
                 </div>
             </Form>

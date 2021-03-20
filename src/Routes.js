@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Switch, Route } from "react-router-dom";
-import FormWrap from "./FormWrap";
+import { MedicalFormWrap } from "./forms/clients/MedicalFormWrap";
 import Dashboard from "./Dashboard";
 import NavigationComponent from './dashboard/NavigationComponent';
 import DailySchedules from './forms/DailySchedules';
@@ -37,7 +37,7 @@ export default class Routes extends Component {
                     <Route exact path={RouteConstants.SESSION} render={props => <SessionNotesForm {...props} />} />
                     <Route exact path={RouteConstants.CLIENT_FORM} render={props => <ClientForm {...props} />} />
                     <Route exact path={RouteConstants.DASHBOARD} component={Dashboard} />
-                    <Route exact path={RouteConstants.FORMWRAP} component={FormWrap} />
+                    <Route exact path={RouteConstants.FORMWRAP} component={MedicalFormWrap} />
                     <Route exact path={RouteConstants.PROFILE} component={Profile} />
                     <Route exact path={RouteConstants.DASHB} component={Clients} />
                     <Route exact path={RouteConstants.LOCATION} component={Locations} />
