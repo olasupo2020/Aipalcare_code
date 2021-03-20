@@ -5,6 +5,8 @@ import { Link, useHistory } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import info from '../images/png15.png';
 import logo from "../images/png14.png"
+import { RouteConstants } from '../constants/CommonConstants';
+import DashBoard from '../Dashboard';
 
 export default function Login() {
   const emailRef = useRef()
@@ -21,7 +23,7 @@ export default function Login() {
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      history.push("/")
+      history.push(RouteConstants.DASHBOARD)
     } catch {
       setError("Failed to log in")
     }

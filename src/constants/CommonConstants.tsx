@@ -21,4 +21,7 @@ export abstract class RouteConstants {
     public static readonly DASH = '/dash';
     public static readonly NOTIFY = '/notify';
     public static readonly CLIENT_FORM = '/client-form';
+    public static readonly SIGN_UP = '/signup';
+    public static readonly LOGIN = '/login';
+    public static readonly FORGOT_PASSWORD = '/forgot-password';
 }
