@@ -31,7 +31,8 @@ import Avatar from '../dashboard/Avatar';
 import Notifications from '../dashboard/Notifications';
 import NotesIcon from '@material-ui/icons/Notes';
 import { RouteConstants } from '../constants/CommonConstants';
-
+import { useAuth } from "../auth/AuthContext";
+import { useHistory } from "react-router-dom";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -111,6 +112,20 @@ function NavigationComponent(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [error, setError] = React.useState("")
+  const { currentUser, logout } = useAuth()
+
+  async function handleLogout() {
+    setError("")
+
+    try {
+      await logout()
+      history.push("/login")
+    } catch {
+      setError("Failed to log out")
+    }
+  }
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -220,7 +235,10 @@ function NavigationComponent(props) {
               <Button startIcon={<HourglassFullIcon />} >Tomorrow</Button>
               <Button startIcon={<ScheduleIcon />} onClick={schedule}>Schedule</Button>
 
-              <Avatar />
+
+              <Button variant="link" onClick={handleLogout}>
+                <Avatar />
+              </Button>
             </ButtonGroup>
 
           </div>
